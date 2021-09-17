@@ -1,0 +1,1 @@
+print("python"[0]+"\n"+"python"[5])
