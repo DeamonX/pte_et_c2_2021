@@ -1,1 +1,1 @@
-print(str((64/48)*60)) # asd
+print(str((64/48)*60)) 
