@@ -1,5 +1,5 @@
 import math
-def szambeker():
+def SecInput():
     x=-1
     while x<0 : 
         x=int(input("Kérem adjon meg egy nem negatív értéket!:   "))
@@ -35,10 +35,10 @@ def SecToSplit(x):
             mp = math.floor(x/60)
             x= x-(mp*60)
             if mp>1:
-                kiir+="Secounds: "+str(mp)+", és a maradék: "
+                kiir+="Secounds: "+str(mp)
             else:
-                kiir+="Secound: "+str(mp)+", és a maradék: "
+                kiir+="Secound: "+str(mp)
     return kiir
 
     
-print(SecToSplit(szambeker()))
+print(SecToSplit(SecInput()))
