@@ -44,19 +44,43 @@ def AtvaltRegirolTizre(regiszamh,szam):
         try:
             if int(szam[k])>-1 and int(szam[k])<10:
                 szamTizesbe+=math.pow(regiszamh,i-(k+1))*int(szam[k])
-                print(str(math.pow(regiszamh,i-(k+1))*int(szam[k])))
         except:
             szamTizesbe+=math.pow(regiszamh, i-(k+1))*(szamertekek.index(szam[k])+10)
-            print(str(math.pow(regiszamh, i-(k+1))*szamertekek.index(szam[k])+10)+"\n"+str(szamertekek.index(szam[k])+10))
         k+=1
-    return str(szamTizesbe)
+    return szamTizesbe
 
+def AtvaltTizesrolUjra(tizesSzam,ujHalmaz):
+    szamertekek=[]
+    if ujHalmaz>10:
+        x=65
+        while x<(65+ujHalmaz-10):
+            szamertekek.append(chr(x))
+            print(chr(x))            
+            x+=1
+    vegsoSzam=""
+    UjhalmazSzama=[]
+    while tizesSzam!=0:
+        if tizesSzam%ujHalmaz <10:
+            UjhalmazSzama.append(tizesSzam%ujHalmaz)
+        else:
+            UjhalmazSzama.append(szamertekek.index(chr(int((tizesSzam%ujHalmaz)+10))))
+        tizesSzam//=ujHalmaz
+    
+    i=len(UjhalmazSzama)-1
+    while 0 <= i:
+        vegsoSzam = str(vegsoSzam)+str(int(UjhalmazSzama[i]))
+        i=i-1
+    return vegsoSzam
+
+def Atvaltas(regiszamh,szam,ujszamh):
     ujszamTizesbe=AtvaltRegirolTizre(regiszamh,szam)
+    UjHalmazos=AtvaltTizesrolUjra(ujszamTizesbe,ujszamh)
 
-    return ujszamTizesbe
+
+    return UjHalmazos
     
 alapSzamH= InputAlapSzam()
 alapSzam= InputSzam()
 UjSzamH= InputUjSzamH()
 
-print("\n"+Atvaltas(alapSzamH,alapSzam,UjSzamH))
+print("\n"+str(alapSzamH)+" alapból, "+str(alapSzam)+" értékkel, és az új számhalmazzal, ami "+str(UjSzamH)+" az új, átkonvertált számunk: "+str(Atvaltas(alapSzamH,alapSzam,UjSzamH)))
